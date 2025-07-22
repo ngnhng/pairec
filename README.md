@@ -67,6 +67,7 @@ curl -X POST http://localhost:8000/api/recommend \
 
 ### For Newcomers
 - **[Tutorial](TUTORIAL.md)** - Beginner-friendly guide to PaiRec's key abstractions and concepts
+- **[Recall Algorithms Guide](RECALL_ALGORITHMS.md)** - Complete technical guide to recall algorithms and implementations
 - **[Developer Guide](DEVELOPER_GUIDE.md)** - Complete onboarding guide for new contributors
 - **[API Reference](API_REFERENCE.md)** - Comprehensive API documentation with examples
 - **[Architecture Overview](ARCHITECTURE.md)** - System design and component details
