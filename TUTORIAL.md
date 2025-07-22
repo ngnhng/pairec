@@ -2,6 +2,19 @@
 
 This tutorial provides a beginner-friendly guide to understanding PaiRec's core architecture and key abstractions. We'll cover the essential concepts that every developer needs to know to effectively work with PaiRec, presented in optimal teaching order from highest-level entry points to lower-level implementation details.
 
+## Quick Reference
+
+| Abstraction | Purpose | Key Files | Why Important |
+|-------------|---------|-----------|---------------|
+| [Request Flow](#1-the-complete-request-flow) | End-to-end recommendation journey | `/pairec.go`, `/web/recommend_controller.go` | Understanding the big picture |
+| [Configuration](#2-configuration-system) | JSON-driven system customization | `/recconf/recconf.go`, `/examples/*.json` | Foundation for all customization |
+| [Web Controllers](#3-web-controllers) | HTTP API entry points | `/web/recommend_controller.go` | User-facing interfaces |
+| [Service Layer](#4-service-layer) | Business logic orchestration | `/service/recommend.go` | Core workflow management |
+| [Processing Pipeline](#5-processing-pipeline) | Recall→Filter→Rank→Sort workflow | `/service/recall/`, `/filter/`, `/sort/` | Heart of recommendation logic |
+| [Data Sources](#6-data-sources--persistence) | Unified data access | `/persist/`, `/module/*_dao.go` | How data flows into system |
+| [Algorithm Integration](#7-algorithm-integration) | ML model serving | `/algorithm/`, `/algorithm/eas/` | AI/ML capabilities |
+| [Context & A/B Testing](#8-context--ab-testing) | Request state & experiments | `/context/`, `/abtest/` | Production operation essentials |
+
 ## Table of Contents
 
 1. [The Complete Request Flow](#1-the-complete-request-flow) - Understanding the user journey
@@ -1088,6 +1101,16 @@ You now understand the 8 key abstractions that form the foundation of PaiRec:
 8. **Context & A/B Testing**: Request state management and experimentation
 
 These abstractions work together to provide a flexible, scalable recommendation system that can be customized for different use cases through configuration rather than code changes.
+
+## Related Documentation
+
+For deeper exploration of PaiRec:
+
+- **[Architecture Overview](ARCHITECTURE.md)**: Technical system design and component details
+- **[Developer Guide](DEVELOPER_GUIDE.md)**: Step-by-step development setup and workflows  
+- **[API Reference](API_REFERENCE.md)**: Complete API documentation with request/response examples
+- **[Contributing Guide](CONTRIBUTING.md)**: How to contribute to the PaiRec project
+- **[Examples](examples/)**: Real-world configuration examples for different use cases
 
 ## Next Steps
 
