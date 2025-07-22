@@ -29,11 +29,13 @@ echo "📦 Installing dependencies..."
 go mod tidy
 
 echo ""
-echo "🔨 Building PaiRec..."
-go build .
+echo "🔧 PaiRec is a library framework - building command line tool..."
+cd commands
+go build -o pairec .
+cd ..
 
-if [ ! -f "pairec" ]; then
-    echo "❌ Build failed. Please check the error messages above."
+if [ ! -f "commands/pairec" ]; then
+    echo "❌ Command line tool build failed. Please check the error messages above."
     exit 1
 fi
 
@@ -45,28 +47,36 @@ echo "🧪 Running quick tests..."
 go test ./recconf/ -v || echo "⚠️  Some tests failed (this might be expected for external dependencies)"
 
 echo ""
-echo "📋 Setup complete! Here's what you can do next:"
+echo "📋 Setup complete! PaiRec is a Go library framework for building recommendation systems."
 echo ""
-echo "1. 🏃 Start the server:"
-echo "   ./pairec -config examples/basic-config.json"
+echo "Here are your next steps:"
 echo ""
-echo "2. 🧪 Test the API (in another terminal):"
-echo "   ./test-api.sh"
+echo "1. 🏗️  Create a new project using the command line tool:"
+echo "   cd commands"
+echo "   ./pairec project create myapp"
+echo "   cd myapp"
 echo ""
-echo "3. 📖 Read the documentation:"
-echo "   - DEVELOPER_GUIDE.md - Development setup and workflow"
+echo "2. 📚 Learn how to integrate PaiRec into your Go application:"
+echo "   See examples in DEVELOPER_GUIDE.md"
+echo ""
+echo "3. 🧪 Test the example configurations:"
+echo "   Using the configurations in examples/ directory"
+echo ""
+echo "4. 📖 Read the comprehensive documentation:"
+echo "   - QUICKSTART.md - 5-minute introduction"
+echo "   - DEVELOPER_GUIDE.md - Complete development guide"
 echo "   - API_REFERENCE.md - API documentation with examples"
 echo "   - ARCHITECTURE.md - System architecture overview"
 echo "   - CONTRIBUTING.md - How to contribute to the project"
 echo ""
-echo "4. 💡 Explore example configurations:"
+echo "5. 💡 Explore example configurations:"
 echo "   - examples/basic-config.json - Minimal setup"
 echo "   - examples/ecommerce-config.json - E-commerce use case"
 echo ""
-echo "5. 🛠️ Development commands:"
+echo "6. 🛠️  Development commands:"
 echo "   - go test ./... - Run all tests"
 echo "   - go fmt ./... - Format code"
-echo "   - go build . - Build binary"
+echo "   - go mod tidy - Update dependencies"
 echo ""
 
 # Check if Docker is available for containerized development
@@ -76,8 +86,14 @@ if command -v docker &> /dev/null; then
     echo ""
 fi
 
-echo "🎉 Happy coding with PaiRec!"
+echo "🎉 Welcome to PaiRec!"
+echo ""
+echo "💡 PaiRec is a library framework. To build a recommendation service:"
+echo "   1. Import PaiRec in your Go application"
+echo "   2. Configure your recommendation pipeline"
+echo "   3. Use pairec.Run() to start the service"
 echo ""
 echo "Need help? Check out:"
 echo "   - GitHub Issues: https://github.com/alibaba/pairec/issues"
 echo "   - Documentation: All .md files in this repository"
+echo "   - Example projects: Use 'pairec project create' command"

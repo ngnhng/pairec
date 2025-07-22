@@ -20,48 +20,56 @@ This guide will help you quickly get started with PaiRec development, understand
 
 ### Installation
 ```bash
-# Clone the repository
-git clone https://github.com/alibaba/pairec.git
-cd pairec
-
-# Install dependencies
-go mod tidy
-
-# Build the project
-go build .
-
-# Run tests (optional - some may fail due to external dependencies)
-go test ./... -v
+# Add PaiRec to your Go project
+go get github.com/alibaba/pairec/v2
 ```
 
-### Running a Basic Server
-```bash
-# Create a minimal configuration file
-cat > config.json << EOF
-{
-  "listen_conf": {
-    "http_port": 8000,
-    "http_addr": "0.0.0.0"
-  },
-  "scene_confs": [
-    {
-      "scene_id": "test_scene",
-      "recall_names": [],
-      "filter_names": [],
-      "sort_names": []
+### Using PaiRec in Your Application
+
+PaiRec is a library that you import into your Go applications:
+
+```go
+package main
+
+import (
+    "github.com/alibaba/pairec/v2"
+    "github.com/alibaba/pairec/v2/recconf"
+)
+
+func main() {
+    // Option 1: Use command-line config flag
+    pairec.Run() // Reads -config flag automatically
+    
+    // Option 2: Load config programmatically
+    err := recconf.LoadConfig("config.json")
+    if err != nil {
+        panic(err)
     }
-  ]
+    pairec.Run()
 }
-EOF
-
-# Run the server
-go run . -config config.json
 ```
 
-The server will start on port 8000. You can test it:
+### Creating a New Project
+
+Use the PaiRec CLI tool to generate a new project:
+
 ```bash
-curl http://localhost:8000/ping
-# Should return: success
+# Clone PaiRec repository
+git clone https://github.com/alibaba/pairec.git
+cd pairec/commands
+
+# Build the CLI tool
+go build -o pairec .
+
+# Create a new project
+./pairec project create my-recommender
+cd my-recommender
+
+# Your project structure:
+# ├── main.go           # Application entry point
+# ├── config.json       # Configuration file  
+# ├── go.mod           # Go module file
+# └── README.md        # Project documentation
 ```
 
 ## Development Environment
