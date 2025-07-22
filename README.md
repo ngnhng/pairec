@@ -66,6 +66,7 @@ curl -X POST http://localhost:8000/api/recommend \
 ## 📚 Documentation
 
 ### For Newcomers
+- **[Tutorial](TUTORIAL.md)** - Beginner-friendly guide to PaiRec's key abstractions and concepts
 - **[Developer Guide](DEVELOPER_GUIDE.md)** - Complete onboarding guide for new contributors
 - **[API Reference](API_REFERENCE.md)** - Comprehensive API documentation with examples
 - **[Architecture Overview](ARCHITECTURE.md)** - System design and component details
@@ -180,4 +181,4 @@ Built with ❤️ by the Alibaba recommendation systems team and open source con
 
 ---
 
-**Getting Started**: Check out our [Developer Guide](DEVELOPER_GUIDE.md) to quickly start contributing to PaiRec!
+**Getting Started**: Check out our [Tutorial](TUTORIAL.md) to understand PaiRec's key abstractions, then follow our [Developer Guide](DEVELOPER_GUIDE.md) to quickly start contributing to PaiRec!
