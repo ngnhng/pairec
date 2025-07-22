@@ -388,6 +388,8 @@ Input: User + Context → [Recall] → [Filter] → [Rank] → [Sort] → Output
 }
 ```
 
+> 📚 **Deep Dive**: For detailed information about recall algorithms, implementations, and optimization strategies, see the [**Recall Algorithms Guide**](RECALL_ALGORITHMS.md).
+
 #### Stage 2: Filter
 **Purpose**: Apply business rules and constraints
 **Input**: Candidate items from recall
@@ -1106,6 +1108,7 @@ These abstractions work together to provide a flexible, scalable recommendation 
 
 For deeper exploration of PaiRec:
 
+- **[Recall Algorithms Guide](RECALL_ALGORITHMS.md)**: Complete technical guide to recall algorithms and implementations  
 - **[Architecture Overview](ARCHITECTURE.md)**: Technical system design and component details
 - **[Developer Guide](DEVELOPER_GUIDE.md)**: Step-by-step development setup and workflows  
 - **[API Reference](API_REFERENCE.md)**: Complete API documentation with request/response examples
