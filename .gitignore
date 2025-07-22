@@ -1,3 +1,33 @@
 commands/bin
 commands/tmp
 .idea/
+
+# Development and testing files
+*.log
+/tmp/
+/coverage.out
+/coverage.html
+
+# Build artifacts  
+/pairec
+/pairecmd
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

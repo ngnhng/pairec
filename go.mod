@@ -47,6 +47,7 @@ require (
 	github.com/aliyun/credentials-go v1.4.6
 	github.com/apache/calcite-avatica-go/v5 v5.0.0
 	github.com/bruceding/go-antlr-valuate v0.0.3
+	github.com/expr-lang/expr v1.16.9
 	github.com/google/uuid v1.3.0
 	go.uber.org/automaxprocs v1.5.2
 )
@@ -64,7 +65,6 @@ require (
 	github.com/aliyun/aliyun-odps-go-sdk/arrow v0.0.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
 	github.com/clbanning/mxj/v2 v2.5.5 // indirect
-	github.com/expr-lang/expr v1.16.9 // indirect
 	github.com/google/flatbuffers v23.1.21+incompatible // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect

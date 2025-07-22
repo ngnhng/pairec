@@ -1,0 +1,117 @@
+{
+  "listen_conf": {
+    "http_port": 8000,
+    "http_addr": "0.0.0.0"
+  },
+  "scene_confs": [
+    {
+      "scene_id": "homepage",
+      "recall_names": ["collaborative_filtering", "popular_items", "category_based"],
+      "filter_names": ["inventory_filter", "quality_filter", "diversity_filter"],
+      "sort_names": ["ml_ranking", "business_boost"],
+      "conf": {
+        "recall_count": 1000,
+        "final_count": 50,
+        "diversity_threshold": 0.7,
+        "max_items_per_category": 10
+      }
+    },
+    {
+      "scene_id": "product_detail",
+      "recall_names": ["similar_products", "frequently_bought_together"],
+      "filter_names": ["inventory_filter", "price_range_filter"],
+      "sort_names": ["similarity_ranking"],
+      "conf": {
+        "recall_count": 200,
+        "final_count": 20
+      }
+    },
+    {
+      "scene_id": "shopping_cart",
+      "recall_names": ["cross_sell", "upsell"],
+      "filter_names": ["inventory_filter", "cart_compatibility_filter"],
+      "sort_names": ["revenue_optimization"],
+      "conf": {
+        "recall_count": 100,
+        "final_count": 10,
+        "min_revenue_boost": 0.1
+      }
+    }
+  ],
+  "dao_conf": {
+    "redis": [
+      {
+        "name": "user_cache",
+        "addr": "localhost:6379",
+        "db_num": 0,
+        "max_idle": 10,
+        "max_active": 100
+      }
+    ],
+    "mysql": [
+      {
+        "name": "product_db",
+        "dsn": "user:password@tcp(localhost:3306)/ecommerce?charset=utf8mb4&parseTime=True&loc=Local",
+        "max_open_conns": 50,
+        "max_idle_conns": 10
+      }
+    ]
+  },
+  "algo_confs": [
+    {
+      "name": "collaborative_filtering",
+      "type": "recall",
+      "conf": {
+        "similarity_type": "cosine",
+        "min_interactions": 5,
+        "max_neighbors": 100
+      }
+    },
+    {
+      "name": "ml_ranking",
+      "type": "rank", 
+      "conf": {
+        "model_endpoint": "http://ml-service:8080/predict",
+        "features": ["user_profile", "item_features", "context"],
+        "timeout": "100ms"
+      }
+    }
+  ],
+  "filter_confs": [
+    {
+      "name": "inventory_filter",
+      "conf": {
+        "check_inventory": true,
+        "min_stock": 1
+      }
+    },
+    {
+      "name": "quality_filter", 
+      "conf": {
+        "min_rating": 3.0,
+        "min_reviews": 5
+      }
+    },
+    {
+      "name": "diversity_filter",
+      "conf": {
+        "max_same_brand": 3,
+        "max_same_category": 5
+      }
+    }
+  ],
+  "sort_confs": [
+    {
+      "name": "business_boost",
+      "conf": {
+        "promotion_boost": 1.2,
+        "new_item_boost": 1.1,
+        "high_margin_boost": 1.15
+      }
+    }
+  ],
+  "log_conf": {
+    "log_level": "info",
+    "log_path": "/var/log/pairec/ecommerce.log"
+  }
+}
